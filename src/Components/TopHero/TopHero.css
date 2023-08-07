@@ -1,0 +1,17 @@
+.TopHero {
+  margin-top: 10rem;
+  margin-left: 10%;
+  font-size: 52px;
+
+  text-transform: uppercase;
+  width: 400px;
+  line-height: 0.8;
+}
+
+.TopHero > p {
+  line-height: 0;
+
+  -webkit-text-fill-color: transparent;
+  -webkit-text-stroke: 3px black;
+  font-size: 60px;
+}

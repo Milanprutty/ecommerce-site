@@ -1,0 +1,21 @@
+.HeaderTop {
+  width: 100vw;
+}
+
+.HeaderTop > ul {
+  display: flex;
+  gap: 1rem;
+  list-style: none;
+  justify-content: space-around;
+  margin-top: 0;
+  padding-top: 20px;
+}
+
+.HeaderTop > ul > :nth-child(2) {
+  display: flex;
+  margin: 0 auto;
+  gap: 1rem;
+}
+.HeaderTop > ul > :nth-child(3) {
+  margin-right: 5%;
+}
