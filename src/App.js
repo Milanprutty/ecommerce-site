@@ -3,6 +3,7 @@ import "./App.css";
 import Header from "./Components/Header/Header";
 import TopHero from "./Components/TopHero/TopHero";
 import Deals from "./Components/Deals/Deals";
+import ProductContainer from "./Components/Products/ProductContainer";
 
 const App = () => {
   return (
@@ -14,6 +15,7 @@ const App = () => {
       <div>
         <Deals />
       </div>
+      <ProductContainer />
     </div>
   );
 };
