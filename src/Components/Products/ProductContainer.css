@@ -1,4 +1,71 @@
 .ProductHeaderText {
   text-align: center;
+
+  font-size: 32px;
+  padding-bottom: 20px;
+  border-bottom: 2px solid black;
+
+  margin: 0 auto;
   margin-top: 20px;
+  width: 70%;
+}
+
+.ProductsContainer {
+  height: 400px;
+  width: 200px;
+  display: flex;
+
+  flex-direction: column;
+  align-items: center;
+}
+
+.TopProductContainer {
+  display: flex;
+  gap: 3rem;
+  margin: 0 auto;
+  margin-top: 40px;
+  flex-shrink: 1;
+  flex-grow: 1;
+  justify-content: center;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+  width: 70%;
+}
+
+.ProductImgContainer > img {
+  width: 100%;
+}
+.ProductImgContainer {
+  height: 14.5rem;
+}
+
+.ProductListInfo {
+  height: 100px;
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  font-family: "ubuntu";
+}
+
+.productCategory {
+  text-transform: uppercase;
+  font-weight: 400;
+  font-size: 12px;
+}
+
+.productName {
+  font-size: 18px;
+}
+
+.productPrice {
+  font-size: 20px;
+}
+
+.productButton > button {
+  padding: 5px 20px;
+  background-color: white;
+  border: 2px solid #61677a;
+  cursor: pointer;
 }

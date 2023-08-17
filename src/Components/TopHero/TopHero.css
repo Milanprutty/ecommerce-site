@@ -1,17 +1,29 @@
 .TopHero {
-  margin-top: 10rem;
-  margin-left: 10%;
-  font-size: 52px;
-
-  text-transform: uppercase;
-  width: 400px;
-  line-height: 0.8;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 80vh;
+  z-index: 3;
+  position: relative;
+  color: #252b48;
 }
 
-.TopHero > p {
-  line-height: 0;
+.TopHero > span {
+  font-size: 32px;
+}
 
+.TopHero > :nth-child(3) {
   -webkit-text-fill-color: transparent;
   -webkit-text-stroke: 3px black;
   font-size: 60px;
+}
+
+.TopHero > :nth-child(1) > span {
+  -webkit-text-fill-color: transparent;
+  -webkit-text-stroke: 2px black;
+}
+.TopHero > :nth-child(3) > span {
+  -webkit-text-stroke: 3px #252b48;
+  font-size: 54px;
 }

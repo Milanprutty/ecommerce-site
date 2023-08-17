@@ -1,21 +1,20 @@
-import React from "react";
+import React, { useState } from "react";
 import "./App.css";
-import Header from "./Components/Header/Header";
-import TopHero from "./Components/TopHero/TopHero";
-import Deals from "./Components/Deals/Deals";
-import ProductContainer from "./Components/Products/ProductContainer";
+
+import HomePage from "./Components/Pages/HomePage";
 
 const App = () => {
+  const [cart, setCart] = useState([]);
+
+  const handleAddCartItem = (item) => {
+    const newCartItem = [...cart, item];
+
+    setCart(newCartItem);
+  };
+
   return (
     <div>
-      <div className="TopSection">
-        <Header />
-        <TopHero />
-      </div>
-      <div>
-        <Deals />
-      </div>
-      <ProductContainer />
+      <HomePage AddCartItem={handleAddCartItem} cart={cart} setCart={setCart} />
     </div>
   );
 };

@@ -4,8 +4,13 @@ import "./TopHero.css";
 const TopHero = () => {
   return (
     <div className="TopHero">
-      Excellent Products
-      <p>Only At us</p>
+      <span>
+        Excellent Prod<span>ucts</span>
+      </span>
+      <br></br>
+      <span>
+        Only At <span>us</span>
+      </span>
     </div>
   );
 };
