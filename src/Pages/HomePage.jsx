@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from "react";
-import Header from "../Header/Header";
-import TopHero from "../TopHero/TopHero";
-import ProductContainer from "../Products/ProductContainer";
-import "../../App.css";
+import React from "react";
+import Header from "../Components/Header/Header";
+import TopHero from "../Components/TopHero/TopHero";
+import ProductContainer from "../Components/Products/ProductContainer";
+import "../App.css";
 
 const HomePage = ({ AddCartItem, cart, setCart }) => {
   return (

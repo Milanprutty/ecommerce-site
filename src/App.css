@@ -5,6 +5,7 @@ html {
   margin: 0;
   font-family: "ubuntu";
   width: 100%;
+  box-sizing: border-box;
 }
 
 body {

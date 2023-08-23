@@ -1,0 +1,17 @@
+.PopupParent {
+  background-color: green;
+  padding: 10px 20px;
+  display: flex;
+  flex-grow: 1;
+  animation: disappear;
+  animation-duration: 4s;
+}
+@keyframes disappear {
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+  }
+}

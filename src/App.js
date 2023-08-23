@@ -1,21 +1,33 @@
-import React, { useState } from "react";
+import React, { useContext } from "react";
 import "./App.css";
-
-import HomePage from "./Components/Pages/HomePage";
+import { Route, Routes } from "react-router-dom";
+import HomePage from "./Pages/HomePage";
+import CartPage from "./Pages/CartPage";
+import cartContext from "./context/cart";
 
 const App = () => {
-  const [cart, setCart] = useState([]);
-
-  const handleAddCartItem = (item) => {
-    const newCartItem = [...cart, item];
-
-    setCart(newCartItem);
-  };
+  const { cart, setCart, handleAddCartItem, deleteItem } =
+    useContext(cartContext);
 
   return (
-    <div>
-      <HomePage AddCartItem={handleAddCartItem} cart={cart} setCart={setCart} />
-    </div>
+    <Routes>
+      <Route
+        path="/"
+        element={
+          <HomePage
+            AddCartItem={handleAddCartItem}
+            cart={cart}
+            setCart={setCart}
+          />
+        }
+      />
+      <Route
+        path="/cart"
+        element={<CartPage deleteItem={deleteItem} cart={cart} />}
+      />
+
+      <Route path="*" element={<div>Not Found</div>} />
+    </Routes>
   );
 };
 

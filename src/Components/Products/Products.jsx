@@ -1,77 +1,17 @@
 import React, { useEffect, useState } from "react";
 import "./ProductContainer.css";
+import PopupItem from "../PopupItem/PopupItem";
 
-const Products = ({ AddCartItem, cart, setCart }) => {
+import { data } from "./ProductArray";
+
+const Products = ({ AddCartItem, cart }) => {
   const getRandomId = () => {
     return crypto.randomUUID();
   };
 
-  const [products, setProducts] = useState([
-    {
-      category: "test",
-      name: "bluetooth headphones",
-      price: 20000,
-      id: getRandomId(),
-      clicked: false,
-    },
-    {
-      category: "test",
-      name: "bluetooth headphones",
-      price: 20000,
-      id: getRandomId(),
-      clicked: false,
-    },
-    {
-      category: "test",
-      name: "bluetooth headphones",
-      price: 20000,
-      id: getRandomId(),
-      clicked: false,
-    },
-    {
-      category: "test",
-      name: "bluetooth headphones",
-      price: 20000,
-      id: getRandomId(),
-      clicked: false,
-    },
-    {
-      category: "test",
-      name: "bluetooth headphones",
-      price: 20000,
-      id: getRandomId(),
-      clicked: false,
-    },
-    {
-      category: "test",
-      name: "bluetooth headphones",
-      price: 20000,
-      id: getRandomId(),
-      clicked: false,
-    },
-    {
-      category: "test",
-      name: "bluetooth headphones",
-      price: 20000,
-      id: getRandomId(),
-      clicked: false,
-    },
-    {
-      category: "test",
-      name: "bluetooth headphones",
-      price: 20000,
-      id: getRandomId(),
-      clicked: false,
-    },
-    {
-      category: "test",
-      name: "bluetooth headphones",
-      price: 20000,
-      id: getRandomId(),
-      clicked: false,
-    },
-  ]);
+  const [products, setProducts] = useState(data);
 
+  const [isOpen, setIsOpen] = useState(false);
   const handleClick = (id, product, i) => {
     if (cart.length === 0) {
       AddCartItem(product);
@@ -81,11 +21,13 @@ const Products = ({ AddCartItem, cart, setCart }) => {
       alert("Already In Cart");
     } else {
       AddCartItem(product);
+
+      setIsOpen(true);
     }
 
     const updatedproducts = products.map((product) => {
       if (id === product.id) {
-        return { ...product, clicked: true };
+        return { ...product, clicked: true, id: getRandomId() };
       }
 
       return product;
@@ -94,16 +36,32 @@ const Products = ({ AddCartItem, cart, setCart }) => {
     setProducts(updatedproducts);
   };
 
+  const handleRemoveClick = (id) => {
+    setIsOpen(false);
+  };
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsOpen(false);
+    }, 4000);
+
+    return () => {
+      clearTimeout(timer);
+    };
+  }, [isOpen]);
+
+  let popUp = "";
+  if (isOpen) {
+    popUp = <PopupItem handleRemoveClick={handleRemoveClick} />;
+  }
+
   return (
     <div className="TopProductContainer">
       {products.map((product, i) => {
         return (
           <div className="ProductsContainer" key={product.id}>
             <div className="ProductImgContainer">
-              <img
-                alt=""
-                src="https://m.media-amazon.com/images/I/61iY7WIkP3L._AC_UL400_.jpg"
-              />
+              <img alt="" src={product.img} />
             </div>
             <div className="ProductListInfo">
               <div className="productCategory">{product.category}</div>
@@ -118,6 +76,7 @@ const Products = ({ AddCartItem, cart, setCart }) => {
           </div>
         );
       })}
+      <div className="PopupContainer">{isOpen === true ? popUp : ""}</div>
     </div>
   );
 };
