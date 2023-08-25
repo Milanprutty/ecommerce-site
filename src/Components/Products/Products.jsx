@@ -43,7 +43,7 @@ const Products = ({ AddCartItem, cart }) => {
   useEffect(() => {
     const timer = setTimeout(() => {
       setIsOpen(false);
-    }, 4000);
+    }, 2000);
 
     return () => {
       clearTimeout(timer);

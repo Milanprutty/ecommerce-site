@@ -1,18 +1,13 @@
-import React from "react";
+import React, { useContext, useEffect } from "react";
 import "./ShoppingCartList.css";
 import ProductList from "./ProductList";
-import { useState } from "react";
+
+import cartContext from "../../context/cart";
 
 const ShoppingCartList = () => {
-  const [total, setTotal] = useState(0);
+  const { cart } = useContext(cartContext);
 
-  const addToTotal = (price) => {
-    setTotal(total + price);
-  };
-
-  const removeFromTotal = (price) => {
-    setTotal(total - price);
-  };
+  let totalCartPrice = 0;
 
   return (
     <div>
@@ -29,7 +24,7 @@ const ShoppingCartList = () => {
               </li>
             </ul>
           </div>
-          <ProductList addToTotal={addToTotal} total={total} />
+          <ProductList totalCartPrice={totalCartPrice} />
         </div>
         <div className="rightSide">
           <table>
@@ -42,6 +37,20 @@ const ShoppingCartList = () => {
               <tr className="shippingDetails">
                 <td>Shipping</td>
                 <td>Free</td>
+              </tr>
+              <tr className="shippingDetails">
+                <td>Tax</td>
+                <td>$0.00</td>
+              </tr>
+              <hr></hr>
+              <tr className="shippingDetails">
+                <td>TOTAL</td>
+                <td>
+                  {cart.map((item) => {
+                    totalCartPrice += item.price * item.count;
+                  })}
+                  {totalCartPrice}
+                </td>
               </tr>
             </tbody>
           </table>

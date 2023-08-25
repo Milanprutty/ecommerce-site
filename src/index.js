@@ -8,7 +8,7 @@ import { Provider } from "./context/cart";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <BrowserRouter>
-    <Provider value={5}>
+    <Provider>
       <App />
     </Provider>
   </BrowserRouter>

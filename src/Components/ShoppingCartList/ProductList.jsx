@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import "./ShoppingCartList.css";
 import {
   AiOutlineMinusCircle,
@@ -7,13 +7,14 @@ import {
 } from "react-icons/ai";
 import cartContext from "../../context/cart";
 
-const ProductList = ({ addToTotal, total }) => {
+const ProductList = ({ totalCartPrice }) => {
   const { cart, deleteItem, addQuantity, removeQuantity } =
     useContext(cartContext);
 
   return (
     <div>
       {cart.map((item) => {
+        item.total = item.price * item.count;
         return (
           <div className="CartItem">
             <div className="CartImgContainer">
@@ -27,16 +28,24 @@ const ProductList = ({ addToTotal, total }) => {
             <div className="CartInfoContainer">
               <div className="CartPriceContainer">${item.price}</div>
               <div className="itemCount">
-                <AiOutlineMinusCircle onClick={() => removeQuantity(item.id)} />
+                <AiOutlineMinusCircle
+                  onClick={() => {
+                    if (item.count === 1) {
+                      return;
+                    } else {
+                      removeQuantity(item.id);
+                    }
+                  }}
+                />
                 {item.count}
                 <AiOutlinePlusCircle
                   onClick={() => {
                     addQuantity(item.id);
-                    addToTotal(item.price);
                   }}
                 />
               </div>
-              <div>{item.price * item.count}</div>
+
+              <div>{item.total}</div>
             </div>
           </div>
         );
