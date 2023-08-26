@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext } from "react";
 import "./ShoppingCartList.css";
 import {
   AiOutlineMinusCircle,
@@ -7,7 +7,7 @@ import {
 } from "react-icons/ai";
 import cartContext from "../../context/cart";
 
-const ProductList = ({ totalCartPrice }) => {
+const ProductList = () => {
   const { cart, deleteItem, addQuantity, removeQuantity } =
     useContext(cartContext);
 
@@ -23,12 +23,19 @@ const ProductList = ({ totalCartPrice }) => {
                 onClick={() => deleteItem(item.id)}
               />
               <img src={item.img} alt="" />
-              {item.name}
+              <div className="itemName">
+                {item.name}
+                <p>
+                  {item.count} * ${item.price}
+                </p>
+              </div>
             </div>
+
             <div className="CartInfoContainer">
               <div className="CartPriceContainer">${item.price}</div>
               <div className="itemCount">
                 <AiOutlineMinusCircle
+                  style={{ cursor: "pointer" }}
                   onClick={() => {
                     if (item.count === 1) {
                       return;
@@ -39,13 +46,14 @@ const ProductList = ({ totalCartPrice }) => {
                 />
                 {item.count}
                 <AiOutlinePlusCircle
+                  style={{ cursor: "pointer" }}
                   onClick={() => {
                     addQuantity(item.id);
                   }}
                 />
               </div>
 
-              <div>{item.total}</div>
+              <div className="totalPrice">{item.total}</div>
             </div>
           </div>
         );

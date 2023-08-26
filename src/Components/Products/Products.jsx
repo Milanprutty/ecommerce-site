@@ -66,7 +66,7 @@ const Products = ({ AddCartItem, cart }) => {
             <div className="ProductListInfo">
               <div className="productCategory">{product.category}</div>
               <div className="productName">{product.name}</div>
-              <div className="productPrice">{product.price}</div>
+              <div className="productPrice">${product.price}</div>
               <div className="productButton">
                 <button onClick={() => handleClick(product.id, product, i)}>
                   Add to Cart

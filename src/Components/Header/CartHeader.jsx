@@ -2,6 +2,7 @@ import React from "react";
 import "./Header.css";
 import { AiOutlineShoppingCart } from "react-icons/ai";
 import { Link } from "react-router-dom";
+import "./CartHeader.css";
 const CartHeader = ({ cart }) => {
   return (
     <div className="HeaderTop">
